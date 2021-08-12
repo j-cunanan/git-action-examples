@@ -1,5 +1,6 @@
 tensorflow==2.5.0
 tensorflow-gpu==2.5.0
+keras_applications==1.0.4
 numpy
 pillow
 matplotlib
