@@ -53,10 +53,9 @@ def load_data_mnist(name='mnist', train_size=7, test_size=2, val_size=1, buffer_
     dataset,
 
   """
-  split_weights = (train_size, test_size, val_size)
-  splits = tfds.Split.TRAIN.subsplit(weighted=split_weights)
+
   (train_dataset, test_dataset, val_dataset) = tfds.load(name,
-                                                         split=list(splits),
+                                                         split=['train[:80%]', 'train[80%:90%]', 'train[90%:]'],
                                                          as_supervised=True)
 
   train_dataset = train_dataset.map(process_image_with_mnist).shuffle(buffer_size).batch(batch_size)
