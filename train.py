@@ -15,10 +15,10 @@
 """main func."""
 
 # Import dataset and model network
-from v0_1.datasets import mnist, kmnist, emnist
+from datasets import mnist, kmnist, emnist
 import tensorflow as tf
 
-from v0_1.models import *
+from models import *
 
 # plt pic
 import matplotlib.pyplot as plt
