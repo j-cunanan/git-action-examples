@@ -1,0 +1,31 @@
+name: model-training
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+jobs:
+  training-job:
+    runs-on: [self-hosted]
+    container: docker://iterativeai/cml:0-dvc2-base1-gpu
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: iterative/setup-cml@v1
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WANDB_API_KEY: ${{ secrets.WANDB_API_KEY }}
+          ACTOR: ${{ github.actor }}
+        run: |
+          sudo apt update
+
+          python3 -m pip install --user -r requirements.txt
+
+          echo "$ACTOR just pushed this code.\n" >> report.md
+
+          python3 run.py train
+          python3 run.py test >> report.md
+
+          cml-send-comment report.md
+
