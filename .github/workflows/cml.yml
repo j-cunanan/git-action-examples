@@ -24,5 +24,6 @@ jobs:
 
           echo "$ACTOR just pushed this code.\n" >> report.md
 
-          python3 train.py --name vgg19
+          python3 train.py >> report.md
 
+          cml-send-comment report.md
