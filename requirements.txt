@@ -1,5 +1,5 @@
-TensorFlow==2.0.a0a
-TensorFlow-gpu==2.0.a0a
+tensorflow==2.0.0
+tensorflow-gpu==2.0.0
 numpy
 pillow
 matplotlib
