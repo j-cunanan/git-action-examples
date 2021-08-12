@@ -66,10 +66,10 @@ elif args.name == 'alexnet':
   model = AlexNet(input_shape=(32, 32, 1),
                   classes=args.classes)
 elif args.name == 'vgg16':
-  model = VGG16(input_shape=(32, 32, 1),
+  model = VGG16(input_shape=(224,224, 3),
                 classes=args.classes)
 elif args.name == 'vgg19':
-  model = VGG19(input_shape=(32, 32, 1),
+  model = VGG19(input_shape=(224, 224, 3),
                 classes=args.classes)
 else:
   model = None
